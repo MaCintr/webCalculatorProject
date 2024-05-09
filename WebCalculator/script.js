@@ -1,17 +1,28 @@
 var resultado = document.getElementById('resultado');
 
-        function adicionar(num) {
-            resultado.value += num;
-        }
+var operadores = ['+', '-', '*', '/'];
 
-        function calcular() {
-            try {
-                resultado.value = eval(resultado.value);
-            } catch {
-                resultado.value = "Erro";
-            }
-        }
+function adicionar(num) {
+    var ultimoChar = resultado.value.charAt(resultado.value.length - 1);
+    if (operadores.includes(num) && operadores.includes(ultimoChar)) {
+        return;
+    }
+    if (resultado.value.length >= 21) {
+        return;
+    }
+    resultado.value += num;
+}
 
-        function limpar() {
-            resultado.value = "";
-        }
+
+
+function calcular() {
+    try {
+        resultado.value = eval(resultado.value);
+    } catch {
+        resultado.value = "Erro";
+    }
+}
+
+function limpar() {
+    resultado.value = "";
+}
